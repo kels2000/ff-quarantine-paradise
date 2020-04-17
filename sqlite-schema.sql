@@ -18,11 +18,10 @@ CREATE TABLE IF NOT EXISTS Employees (
   clock_out DATETIME
 );
 
-.import employees.csv Employees
 
-CREATE TABLE IF NOT EXISTS Voyages (
-  sid INTEGER NOT NULL,
-  bid INTEGER NOT NULL,
-  date_of_voyage DATE NOT NULL,
-  PRIMARY KEY(sid, bid, date_of_voyage)
-);
+-- CREATE TABLE IF NOT EXISTS Voyages (
+--   sid INTEGER NOT NULL,
+--   bid INTEGER NOT NULL,
+--   date_of_voyage DATE NOT NULL,
+--   PRIMARY KEY(sid, bid, date_of_voyage)
+-- );
