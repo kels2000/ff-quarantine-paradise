@@ -17,7 +17,18 @@ CREATE TABLE IF NOT EXISTS Employees (
   clock_out TEXT
 );
 
+CREATE TABLE IF NOT EXISTS Reservations (
+  roomNumber INTEGER PRIMARY KEY,
+   guestID INTEGER PRIMARY KEY,
+  dateIn DATETIME,
+  dateOut DATETIME
+);
 
+CREATE TABLE IF NOT EXISTS AvailableRooms (
+  roomNumber INTEGER PRIMARY KEY,
+  roomPrice INTEGER,
+  roomType TEXT,
+);
 -- CREATE TABLE IF NOT EXISTS Voyages (
 --   sid INTEGER NOT NULL,
 --   bid INTEGER NOT NULL,
