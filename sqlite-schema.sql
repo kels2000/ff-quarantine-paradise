@@ -30,6 +30,16 @@ CREATE TABLE IF NOT EXISTS AvailableRooms (
   roomNumber INTEGER PRIMARY KEY,
   roomPrice INTEGER
 );
+
+
+CREATE TABLE IF NOT EXISTS HotelGuests (
+  gid INTEGER PRIMARY KEY, 
+  gName TEXT, 
+  phone TEXT, 
+  bday TEXT, 
+  homeAddress TEXT, 
+  email TEXT
+);
 -- CREATE TABLE IF NOT EXISTS Voyages (
 --   sid INTEGER NOT NULL,
 --   bid INTEGER NOT NULL,
