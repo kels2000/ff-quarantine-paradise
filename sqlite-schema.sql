@@ -18,16 +18,17 @@ CREATE TABLE IF NOT EXISTS Employees (
 );
 
 CREATE TABLE IF NOT EXISTS Reservations (
-  roomNumber INTEGER PRIMARY KEY,
-   guestID INTEGER PRIMARY KEY,
+  roomNumber INTEGER,
+   guestID INTEGER,
   dateIn DATETIME,
-  dateOut DATETIME
+  dateOut DATETIME,
+  resID INTEGER PRIMARY KEY
 );
 
 CREATE TABLE IF NOT EXISTS AvailableRooms (
-  roomNumber INTEGER PRIMARY KEY,
-  roomPrice INTEGER,
   roomType TEXT,
+  roomNumber INTEGER PRIMARY KEY,
+  roomPrice INTEGER
 );
 -- CREATE TABLE IF NOT EXISTS Voyages (
 --   sid INTEGER NOT NULL,
