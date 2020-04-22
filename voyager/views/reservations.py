@@ -12,7 +12,7 @@ from voyager.validate import NAME_RE, INT_RE, DATE_RE
 def reservations(conn):
     return execute(conn, "SELECT r.roomNumber, r.dateOut, r.dateIn, r.resID, r.guestID FROM Reservations AS r")
 def getMyRes(conn, guestname): 
-    return execute(conn, f"SELECT r.roomNumber, r.dateIn, r.dateOut, r.resID, r.guestID FROM Reservations AS r INNER JOIN HotelGuests ON Reservations.guestID = HotelGuest.gid WHERE HotelGuest.gName = '{guestname}'")
+    return execute(conn, f"SELECT Reservations.roomNumber, Reservations.dateIn, Reservations.dateOut, Reservations.resID, Reservations.guestID FROM Reservations INNER JOIN HotelGuests ON Reservations.guestID = HotelGuests.gid WHERE '{guestname}' = HotelGuests.gName")
 def views(bp):
 
     @bp.route("/reservations")
@@ -24,6 +24,9 @@ def views(bp):
     @bp.route("/reservations/myReservations", methods=["POST", "GET"])
     def _getMyRes():
         with get_db() as conn: 
-            guestname = request.form['guestname']
-            rows = getMyRes(conn, guestname)
-        return render_template("myReservations.html", name="Reservation", rows=rows)
+            if(request.method == "GET"):
+                return render_template("/myReservations.html")
+            if(request.method == "POST"): 
+                guestname = request.form['guestname']
+                rows = getMyRes(conn, guestname)
+        return render_template("table.html", name="Your Reservations", rows=rows)
