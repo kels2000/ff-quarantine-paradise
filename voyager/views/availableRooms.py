@@ -14,7 +14,7 @@ def availableRooms(conn):
     return execute(conn, "SELECT a.roomType, a.roomNumber, a.roomPrice FROM AvailableRooms AS a")
 
 def availableOnDate(conn, checkin, checkout):
-    return execute(conn, f"SELECT DISTINCT Reservations.roomNumber, AvailableRooms.roomType, AvailableRooms.roomPrice FROM AvailableRooms INNER JOIN Reservations ON Reservations.roomNumber = AvailableRooms.roomNumber and '{checkin}' > Reservations.dateOut AND '{checkout}' > Reservations.dateOut OR '{checkin}' < Reservations.dateIn AND '{checkout}' < Reservations.dateIn")
+    return execute(conn, f"SELECT DISTINCT Reservations.roomNumber, AvailableRooms.roomType, AvailableRooms.roomPrice FROM AvailableRooms INNER JOIN Reservations ON Reservations.roomNumber = AvailableRooms.roomNumber WHERE '{checkin}' > Reservations.dateOut AND '{checkout}' > Reservations.dateOut OR '{checkin}' < Reservations.dateIn AND '{checkout}' < Reservations.dateIn")
 def views(bp):
 
     @bp.route("/availableRooms")
