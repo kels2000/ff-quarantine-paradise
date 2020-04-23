@@ -1,9 +1,5 @@
-CREATE TABLE IF NOT EXISTS Sailors (
-  sid INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT,
-  age INTEGER,
-  experience INTEGER -- years of experience
-);
+
+DROP TABLE Employees;
 
 CREATE TABLE IF NOT EXISTS Employees (
   eid INTEGER PRIMARY KEY,
@@ -13,22 +9,28 @@ CREATE TABLE IF NOT EXISTS Employees (
   email TEXT,
   pos TEXT,
   salary INTEGER,
-  clock_in TEXT,
-  clock_out TEXT
+  latest_clock_in TEXT,
+  latest_clock_out TEXT
 );
 
 CREATE TABLE IF NOT EXISTS Reservations (
   roomNumber INTEGER,
-   guestID INTEGER,
+  guestID INTEGER,
   dateIn DATETIME,
   dateOut DATETIME,
-  resID INTEGER PRIMARY KEY
+  resID INTEGER PRIMARY KEY AUTOINCREMENT
 );
+
 
 CREATE TABLE IF NOT EXISTS AvailableRooms (
   roomType TEXT,
   roomNumber INTEGER PRIMARY KEY,
   roomPrice INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS RoomService (
+  item TEXT PRIMARY KEY,
+  price INTEGER
 );
 
 
@@ -40,9 +42,4 @@ CREATE TABLE IF NOT EXISTS HotelGuests (
   homeAddress TEXT, 
   email TEXT
 );
--- CREATE TABLE IF NOT EXISTS Voyages (
---   sid INTEGER NOT NULL,
---   bid INTEGER NOT NULL,
---   date_of_voyage DATE NOT NULL,
---   PRIMARY KEY(sid, bid, date_of_voyage)
--- );
+

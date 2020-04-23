@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>{{ name }}</title>
+  </head>
+  <body>
+    <h1>{{ name }}</h1>
+    <table>
+      {% if rows %}
+      <tr>
+        {% for name in rows[0].keys() %}
+          <th>{{ name }}</th>
+        {% endfor %}
+      <tr>
+      {% endif %}
+      {% for row in rows %}
+      <tr>
+        {% for col in row.values() %}
+          <td>{{ col }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+  <br/>
+  <form action="/employees/info/in" method=POST>
+    <label>Employee ID:</label>
+    <input name="employee-info"/>
+    <label>Clock-In (MM/DD/YYYY HH:MM) </label>
+    <input name="employee-in"/>
+    <input type=submit value="Submit"/>
+  </form>
+  <form action="/employees/info/out" method=POST>
+    <label>Employee ID:</label>
+    <input name="employee-info"/>
+    <label>Clock-Out (MM/DD/YYYY HH:MM) </label>
+    <input name="employee-out"/>
+    <input type=submit value="Submit"/>
+  </form>
+</html>
