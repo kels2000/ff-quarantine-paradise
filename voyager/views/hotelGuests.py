@@ -10,7 +10,7 @@ from voyager.validate import validate_field, render_errors
 from voyager.validate import NAME_RE, INT_RE, DATE_RE
 
 def hotelGuests(conn):
-    return execute(conn, "SELECT h.gName, h.phone, h.bday, h.homeAddress, h.email FROM HotelGuests AS h")
+    return execute(conn, "SELECT h.gName, h.phone, h.bday, h.homeAddress, h.email, FROM HotelGuests AS h")
     
 def views(bp):
 
@@ -19,3 +19,5 @@ def views(bp):
         with get_db() as conn:
             rows = hotelGuests(conn)
         return render_template("table.html", name="hotelGuests", rows=rows)
+
+   

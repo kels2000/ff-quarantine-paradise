@@ -1,18 +1,33 @@
 <html>
-    <head>
-        <title>
-            Order Room Service!
-        </title>
-        <img src="/Users/kelsifulton/Documents/GitHub/Software-Dev-Studio/ff-quarantine-paradise/voyager/templates/hotelmenu.png" alt="Hotel Menu">
+        <head>
+            <title>{{ name }}</title>
+          </head>
+          <body>
+            <h1>{{ name }}</h1>
+            <table>
+              {% if rows %}
+              <tr>
+                {% for name in rows[0].keys() %}
+                  <th>{{ name }}</th>
+                {% endfor %}
+              <tr>
+              {% endif %}
+              {% for row in rows %}
+              <tr>
+                {% for col in row.values() %}
+                  <td>{{ col }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </table>
+<br/>
         <body>
-            <h1>Choose Dates</h1>
-            <form action="/availableRooms/availableOnDate" method="POST">
-            <label>Check In: </label>
-            <input name="check-in-date"/>
-            <label>Check Out: </label>
-            <input name="check-out-date"/>
-            <input type="submit" value="See Available Rooms"/>
+            <form action="/hotelGuests/roomService" method="POST">
+            <label>Reservation ID: </label>
+            <input name="res_id"/>
+            <label>Item: </label>
+            <input name="item"/>
+            <input type="submit" value="Submit Order"/>
         </form>
         </body>
-    </head>
 </html>
