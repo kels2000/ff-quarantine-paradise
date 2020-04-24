@@ -12,7 +12,7 @@ from voyager.validate import validate_field, render_errors
 from voyager.validate import NAME_RE, INT_RE, DATE_RE
 
 def employees(conn):
-    return execute(conn, "SELECT distinct e.eid, e.name, e.phone_num, e.address, e.email, e.pos, e.salary, e.clock_in, e.clock_out FROM Employees AS e ORDER BY e.eid desc;")
+    return execute(conn, "SELECT distinct e.eid, e.name, e.phone_num, e.address, e.email, e.pos, e.salary, e.latest_clock_in, e.latest_clock_out FROM Employees AS e ORDER BY e.eid desc;")
 
 def employeeInfo(conn, eid):
     return execute(conn, f"SELECT e.name, e.phone_num, e.address, e.email, e.pos, e.salary, e.latest_clock_in, e.latest_clock_out FROM Employees as e where e.eid = '{eid}'")
